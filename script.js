@@ -27,6 +27,8 @@ function addNewEmployee (event) {
     `;
 
     newEmployeeLocation.innerHTML += newEmployee;
+
+    document.getElementById("employee-form").reset();
 }
 
 function deleteEmployee (event) {
