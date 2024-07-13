@@ -1,5 +1,7 @@
 console.log('test');
 
+let monthlyCost = 0;
+
 function addNewEmployee (event) {
     event.preventDefault();
     let firstNameText = document.getElementById('first-name-text').value;
@@ -8,7 +10,11 @@ function addNewEmployee (event) {
     let jobTitleText = document.getElementById('job-title-text').value;
     let annualSalaryText = document.getElementById('annual-salary-text').value;
     let newEmployeeLocation = document.getElementById('employee-table');
+    let monthlyCostLocation = document.getElementById('total-monthly-cost');
+    
+    monthlyCostLocation.innerHTML = '';
 
+    monthlyCost += Number(annualSalaryText);
     // console.log (firstNameText);
     // console.log (lastNameText);
     // console.log (idText);
@@ -27,11 +33,12 @@ function addNewEmployee (event) {
     `;
 
     newEmployeeLocation.innerHTML += newEmployee;
+    monthlyCostLocation.innerHTML += monthlyCost;
 
     document.getElementById("employee-form").reset();
 }
 
 function deleteEmployee (event) {
     event.target.parentElement.parentElement.remove();
-
 }
+
