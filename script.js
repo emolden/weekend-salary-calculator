@@ -27,7 +27,7 @@ function addNewEmployee (event) {
             <td>${lastNameText}</td>
             <td>${idText}</td>
             <td>${jobTitleText}</td>
-            <td>${annualSalaryText}</td>
+            <td id="annual-salary-table-text" type="text">${annualSalaryText}</td>
             <td> <button onclick="deleteEmployee(event)">❌</button>
         </tr>
     `;
@@ -35,10 +35,23 @@ function addNewEmployee (event) {
     newEmployeeLocation.innerHTML += newEmployee;
     monthlyCostLocation.innerHTML += monthlyCost;
 
+    if(monthlyCost > 20000) {
+        document.getElementById("total-monthly-cost").style.color = 'red';
+    }
+
     document.getElementById("employee-form").reset();
 }
 
 function deleteEmployee (event) {
     event.target.parentElement.parentElement.remove();
+    let monthlyCostLocation = document.getElementById('total-monthly-cost');
+    let annualSalaryTableText = document.getElementById('annual-salary-table-text').textContent;
+    monthlyCostLocation.innerHTML = '';
+    // console.log({test: document.getElementById('annual-salary-table-text').nodeValue});
+    // console.log(typeof annualSalarTableText);
+    monthlyCost -= Number(annualSalaryTableText);
+    monthlyCostLocation.innerHTML += monthlyCost;
 }
+
+
 
