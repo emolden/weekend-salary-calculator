@@ -27,7 +27,7 @@ function addNewEmployee (event) {
             <td>${lastNameText}</td>
             <td>${idText}</td>
             <td>${jobTitleText}</td>
-            <td id="annual-salary-table-text" type="text">${annualSalaryText}</td>
+            <td id="annual-salary-table-text" type="text">$${annualSalaryText}</td>
             <td> <button onclick="deleteEmployee(event)">❌</button>
         </tr>
     `;
@@ -39,7 +39,8 @@ function addNewEmployee (event) {
 
     if(monthlyCost > 20000) {
         //document.getElementById("footer").style.color = 'red';
-        document.querySelector('.over-budget').style.color = 'red';
+        document.querySelector('footer').classList = 'over-budget';
+        // document.querySelector('.over-budget').style.color = 'red';
     }
     
     document.getElementById("employee-form").reset();
@@ -59,7 +60,7 @@ function deleteEmployee (event) {
     monthlyCostString = '$' + monthlyCost.toLocaleString();
     monthlyCostLocation.innerHTML += monthlyCostString;
     if(monthlyCost <= 20000) {
-        document.querySelector('.over-budget').style.color = 'black';
+        document.querySelector('.over-budget').classList.remove('over-budget');
     }
 }
 

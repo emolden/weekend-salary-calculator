@@ -45,3 +45,7 @@ table {
     background-color: rgb(154, 193, 232);
     padding-bottom: 5%;
   }
+
+  .over-budget {
+    color: red;
+  }
