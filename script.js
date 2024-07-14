@@ -1,4 +1,4 @@
-console.log('test');
+// console.log('test');
 
 let monthlyCost = 0;
 
@@ -14,7 +14,7 @@ function addNewEmployee (event) {
     
     monthlyCostLocation.innerHTML = '';
 
-    monthlyCost += Number(annualSalaryText);
+    monthlyCost += Number(annualSalaryText)/12;
     // console.log (firstNameText);
     // console.log (lastNameText);
     // console.log (idText);
@@ -32,8 +32,10 @@ function addNewEmployee (event) {
         </tr>
     `;
 
+    let monthlyCostString = '$' + monthlyCost.toLocaleString();
+
     newEmployeeLocation.innerHTML += newEmployee;
-    monthlyCostLocation.innerHTML += monthlyCost;
+    monthlyCostLocation.innerHTML += monthlyCostString;
 
     if(monthlyCost > 20000) {
         document.getElementById("footer").style.color = 'red';
@@ -51,8 +53,10 @@ function deleteEmployee (event) {
     // console.log({test: event.target.parentElement.parentElement.children[4].innterText});
     // console.log({test: document.getElementById('annual-salary-table-text').nodeValue});
     // console.log(typeof annualSalarTableText);
-    monthlyCost -= Number(annualSalaryTableText);
-    monthlyCostLocation.innerHTML += monthlyCost;
+    monthlyCost -= Number(annualSalaryTableText)/12;
+
+    monthlyCostString = '$' + monthlyCost.toLocaleString();
+    monthlyCostLocation.innerHTML += monthlyCostString;
 }
 
 
