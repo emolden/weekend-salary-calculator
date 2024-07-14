@@ -38,9 +38,10 @@ function addNewEmployee (event) {
     monthlyCostLocation.innerHTML += monthlyCostString;
 
     if(monthlyCost > 20000) {
-        document.getElementById("footer").style.color = 'red';
+        //document.getElementById("footer").style.color = 'red';
+        document.querySelector('.over-budget').style.color = 'red';
     }
-
+    
     document.getElementById("employee-form").reset();
 }
 
@@ -57,6 +58,9 @@ function deleteEmployee (event) {
 
     monthlyCostString = '$' + monthlyCost.toLocaleString();
     monthlyCostLocation.innerHTML += monthlyCostString;
+    if(monthlyCost <= 20000) {
+        document.querySelector('.over-budget').style.color = 'black';
+    }
 }
 
 
