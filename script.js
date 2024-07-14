@@ -36,7 +36,7 @@ function addNewEmployee (event) {
     monthlyCostLocation.innerHTML += monthlyCost;
 
     if(monthlyCost > 20000) {
-        document.getElementById("total-monthly-cost").style.color = 'red';
+        document.getElementById("footer").style.color = 'red';
     }
 
     document.getElementById("employee-form").reset();
@@ -45,8 +45,10 @@ function addNewEmployee (event) {
 function deleteEmployee (event) {
     event.target.parentElement.parentElement.remove();
     let monthlyCostLocation = document.getElementById('total-monthly-cost');
-    let annualSalaryTableText = document.getElementById('annual-salary-table-text').textContent;
+    let annualSalaryTableText = event.target.parentElement.parentElement.children[4].innerText;
+    // let annualSalaryTableText = document.getElementById('annual-salary-table-text td').textContent;
     monthlyCostLocation.innerHTML = '';
+    // console.log({test: event.target.parentElement.parentElement.children[4].innterText});
     // console.log({test: document.getElementById('annual-salary-table-text').nodeValue});
     // console.log(typeof annualSalarTableText);
     monthlyCost -= Number(annualSalaryTableText);
