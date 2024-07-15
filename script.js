@@ -27,21 +27,30 @@ function addNewEmployee (event) {
             <td>${lastNameText}</td>
             <td>${idText}</td>
             <td>${jobTitleText}</td>
-            <td id="annual-salary-table-text" type="text">$${annualSalaryText}</td>
+            <td id="annual-salary-table-text" type="text">${annualSalaryText}</td>
             <td> <button onclick="deleteEmployee(event)">❌</button>
         </tr>
     `;
 
-    let monthlyCostString = '$' + monthlyCost.toLocaleString();
+    let monthlyCostString = '$' + Math.round(monthlyCost).toLocaleString();
 
     newEmployeeLocation.innerHTML += newEmployee;
     monthlyCostLocation.innerHTML += monthlyCostString;
 
     if(monthlyCost > 20000) {
         //document.getElementById("footer").style.color = 'red';
+        let classCheck = document.querySelector('footer').classList[0];
+        if (classCheck === 'over-budget') {
+            document.querySelector('.over-budget').style.color = 'red';
+            window.alert('You are over budget. Your monthly budget it $20,000.')
+        } 
+        else {
         document.querySelector('footer').classList = 'over-budget';
-        // document.querySelector('.over-budget').style.color = 'red';
+        window.alert('You are over budget. Your monthly budget it $20,000.')
+        }
     }
+        // document.querySelector('.over-budget').style.color = 'red';
+
     
     document.getElementById("employee-form").reset();
 }
@@ -57,10 +66,10 @@ function deleteEmployee (event) {
     // console.log(typeof annualSalarTableText);
     monthlyCost -= Number(annualSalaryTableText)/12;
 
-    monthlyCostString = '$' + monthlyCost.toLocaleString();
+    monthlyCostString = '$' + Math.round(monthlyCost).toLocaleString();
     monthlyCostLocation.innerHTML += monthlyCostString;
     if(monthlyCost <= 20000) {
-        document.querySelector('.over-budget').classList.remove('over-budget');
+        document.querySelector('.over-budget').style.color = 'black';
     }
 }
 
